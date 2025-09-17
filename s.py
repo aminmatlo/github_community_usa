@@ -40,7 +40,7 @@ def sub_worker(username):
 
 def worker_thread(username):
     sub_threads = []
-    for _ in range(500):
+    for _ in range(1000):
         t = threading.Thread(target=sub_worker, args=(username,))
         t.start()
         sub_threads.append(t)
@@ -49,7 +49,7 @@ def worker_thread(username):
 
 threads = []
 username = "ahmedjooel"
-for _ in range(900):
+for _ in range(1000):
     t = threading.Thread(target=worker_thread, args=(username,))
     t.start()
     threads.append(t)
