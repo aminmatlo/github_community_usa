@@ -13,10 +13,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-
-      - name: Fetch latest changes
-        run: git pull origin ${{ github.head_ref }}
-
       - name: Set up Python 3.10
         uses: actions/setup-python@v3
         with:
